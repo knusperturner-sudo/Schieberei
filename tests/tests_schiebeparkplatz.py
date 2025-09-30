@@ -35,3 +35,10 @@ def test_read_rest(tmp_path):
     test_file.write_text("erste Zeile\nzweite Zeile\ndritte Zeile\nvierte Zeile\n")
     result = read_rest(str(test_file))
     assert result == ["dritte Zeile", "vierte Zeile"]
+
+def test_parkplatz_fuellen():
+    array = [None, None, None, None]
+    lines = ["A 1", "B 3"]
+    result = parkplatz_fuellen(array.copy(), lines)
+
+    assert result == ["A", "A", "B", "B"]

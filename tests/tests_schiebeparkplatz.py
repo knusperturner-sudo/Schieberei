@@ -9,3 +9,10 @@ def test_read_in_parkplatz(tmp_path):
     result = read_in_parkplatz(str(test_file))
 
     assert result == ["Parkplatz A", "Parkplatz B"]
+
+
+def test_read_first_line(tmp_path):
+    test_file = tmp_path / "test.txt"
+    test_file.write_text("foo bar baz\nzweite zeile\n")
+    result = read_first_line(str(test_file))
+    assert result == "foo bar baz"

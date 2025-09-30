@@ -3,9 +3,7 @@
     2. Datei zeilenweise einlesen und Zeilen entsprechend behandeln
         1. Erste Zeile: Anzahl der richtig parkenden Autos
             1. Anzahl der normalen Parkplätze berechnen
-        2. Zweite Zeile: Anzahl der quer parkenden Autos
-            1. Überprüfen, ob es genug parkplätze gibt um die queren Autos zu verschieben
-        3. Restliche Zeilen: Autos und an welchem Parkplatz "indize" sie beginnen
+        2. Restliche Zeilen: Autos und an welchem Parkplatz "indize" sie beginnen
             Erstmal zwischenspeichern (Eventuell in einem Dictionary?)
     3. Eingelesende Daten in einer sinnvollen Datenstruktur speichern / repräsentiere
         1. Einfacheres Array
@@ -20,7 +18,7 @@
             Wenn Nein fahre fort mit 2.3.1
         2. Wenn möglich die Variante wählen bei der das Auto nur einen Platz verschoben werden muss
     3. Fälle bei denen mehrere Autos verschoben werden müssen
-        1. Rekursiv auf beiden Seiten probieren weitere Autos zu verschieben, bis genug platz ist
+        1. Iterativ auf beiden Seiten probieren weitere Autos zu verschieben, bis genug platz ist
         2. Die Variante wählen, bei der weniger verschoben werden muss
 3. Ergebnis ausgeben
     1. Dabei auf das richtige Format achten

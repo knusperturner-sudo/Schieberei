@@ -13,3 +13,10 @@ def read_first_line(path: str) -> str:
 def char_to_num(char: str) -> int:
     char = char.upper()
     return ord(char) - ord("A") + 1
+
+def read_rest(path: str) -> list[str]:
+    with open(path, "r", encoding="utf-8") as f:
+        f.readline()
+        f.readline()
+        rest = [line.strip() for line in f]
+        return rest

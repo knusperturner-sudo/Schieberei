@@ -44,3 +44,9 @@ def test_parkplatz_fuellen():
 
     assert result == ["A", "A", "B", "B"]
 
+    array = [None, None, None, None, None, None, None]
+    lines = ["H 2", "I 5"]
+
+    result = parkplatz_fuellen(array, lines)
+
+    assert result == [None, None, "H", "H", None, "I", "I"]

@@ -42,3 +42,12 @@ def find_key_positions(parkplatz: list, auto: str) -> dict:
     if right_pos >= len(parkplatz):
         right_pos = None
     return {"left": left_pos, "right": right_pos}
+
+def analyze_key_position(parkplatz: list, pos: int) -> str:
+    if pos is None:
+        return "Außerhalb des Parkplatzes"
+    if pos < 0 or pos >= len(parkplatz):
+        return "Außerhalb des Parkplatzes"
+    if parkplatz[pos] is None:
+        return "frei"
+    return "blockiert"

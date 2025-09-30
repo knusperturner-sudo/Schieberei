@@ -5,6 +5,7 @@ from src.schiebeparkplatz import char_to_num
 from src.schiebeparkplatz import read_rest
 from src.schiebeparkplatz import parkplatz_fuellen
 from src.schiebeparkplatz import find_key_positions
+from src.schiebeparkplatz import analyze_key_position
 
 def test_read_in_parkplatz(tmp_path):
 
@@ -58,3 +59,11 @@ def test_find_key_positions():
     assert find_key_positions(parkplatz, "A") == {"left": None, "right": 1}
     assert find_key_positions(parkplatz, "D") == {"left": 3, "right": None}
     assert find_key_positions(parkplatz, "X") == {"left": None, "right": None}
+
+def test_analyze_key_position():
+    parkplatz = ["A", None, "B", None]
+    assert analyze_key_position(parkplatz, None) == "Außerhalb des Parkplatzes"
+    assert analyze_key_position(parkplatz, -1) == "Außerhalb des Parkplatzes"
+    assert analyze_key_position(parkplatz, 4) == "Außerhalb des Parkplatzes"
+    assert analyze_key_position(parkplatz, 1) == "frei"
+    assert analyze_key_position(parkplatz, 0) == "blockiert"

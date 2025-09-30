@@ -21,3 +21,9 @@ def test_read_in_first_line(tmp_path):
     result = read_first_line(str(test_file))
 
     assert result == "bar"
+
+def test_char_to_num():
+    assert char_to_num("A") == 1
+    assert char_to_num("B") == 2
+    assert char_to_num("Z") == 26
+    assert char_to_num("a") == 1  # Teste auch Kleinbuchstaben

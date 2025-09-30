@@ -50,3 +50,10 @@ def test_parkplatz_fuellen():
     result = parkplatz_fuellen(array, lines)
 
     assert result == [None, None, "H", "H", None, "I", "I"]
+
+def test_find_key_positions():
+    parkplatz = ["A", "B", "B", "C", "D"]
+    assert find_key_positions(parkplatz, "B") == {"left": 0, "right": 3}
+    assert find_key_positions(parkplatz, "A") == {"left": None, "right": 1}
+    assert find_key_positions(parkplatz, "D") == {"left": 3, "right": None}
+    assert find_key_positions(parkplatz, "X") == {"left": None, "right": None}

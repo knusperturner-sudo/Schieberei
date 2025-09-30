@@ -30,3 +30,4 @@ def parkplatz_fuellen(array: list, lines: list[str]) -> list:
         if 0 <= index + 1 < len(array):
             array[index + 1] = auto
     return array
+

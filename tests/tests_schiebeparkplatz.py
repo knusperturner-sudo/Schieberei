@@ -4,6 +4,7 @@ from src.schiebeparkplatz import read_first_line
 from src.schiebeparkplatz import char_to_num
 from src.schiebeparkplatz import read_rest
 from src.schiebeparkplatz import parkplatz_fuellen
+from src.schiebeparkplatz import find_key_positions
 
 def test_read_in_parkplatz(tmp_path):
 

@@ -31,3 +31,14 @@ def parkplatz_fuellen(array: list, lines: list[str]) -> list:
             array[index + 1] = auto
     return array
 
+def find_key_positions(parkplatz: list, auto: str) -> dict:
+    indices = [i for i, x in enumerate(parkplatz) if x == auto]
+    if not indices:
+        return {"left": None, "right": None}
+    left_pos = min(indices) - 1
+    right_pos = max(indices) + 1
+    if left_pos < 0:
+        left_pos = None
+    if right_pos >= len(parkplatz):
+        right_pos = None
+    return {"left": left_pos, "right": right_pos}

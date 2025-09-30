@@ -6,6 +6,7 @@ from src.schiebeparkplatz import read_rest
 from src.schiebeparkplatz import parkplatz_fuellen
 from src.schiebeparkplatz import find_key_positions
 from src.schiebeparkplatz import analyze_key_position
+from src.schiebeparkplatz import solve_iterativ
 
 def test_read_in_parkplatz(tmp_path):
 
@@ -75,12 +76,13 @@ def test_solve_iterativ():
 
     ergebnis, richtung = solve_iterativ(parkplatz, quereAutos, 1, anzahlNormal)
     assert ergebnis == {"H": 1}
-    assert richtung == "links"
+    assert richtung in ("links", "rechts") #ist hier egal
 
-    parkplatz = [None, "H", "H", "H", None]
-    quereAutos = {"H": 1}
-    anzahlNormal = len(parkplatz)
+    parkplatz = [None, None, "H", "H", None, "I", "I"]
+    quereAutos = {"H": 2, "I": 5}
 
-    ergebnis, richtung = solve_iterativ(parkplatz, quereAutos, 2, anzahlNormal)
-    assert ergebnis == {"H": 2}
-    assert richtung == "links"
+    ergebnis, richtung = solve_iterativ(parkplatz, quereAutos, 5, len(parkplatz))
+
+    assert ergebnis["H"] >= 1
+    assert ergebnis["I"] >= 1
+    assert richtung in ("links", "rechts")

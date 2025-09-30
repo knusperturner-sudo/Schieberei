@@ -51,3 +51,39 @@ def analyze_key_position(parkplatz: list, pos: int) -> str:
     if parkplatz[pos] is None:
         return "frei"
     return "blockiert"
+
+def solve_iterativ(parkplatz: list, quereAutos: dict, parkplatz_index: int, anzahlNormal: int):
+    if parkplatz[parkplatz_index] is None:
+        return None, None
+    def versuchen(richtung: str):
+        array = parkplatz.copy()
+        autos_pos = quereAutos.copy()
+        ergebnis = {}
+        current_pos = parkplatz_index
+        while array[current_pos] is not None:
+            auto = array[current_pos]
+            key_positions = find_key_positions(array, auto)
+            next_pos = key_positions["left"] if richtung == "links" else key_positions["right"]
+            status = analyze_key_position(array, next_pos)
+            if status == "frei":
+                delta = -1 if richtung == "links" else 1
+                old_indices = [i for i, x in enumerate(array) if x == auto]
+                for i in old_indices:
+                    array[i] = None
+                new_indices = [i + delta for i in old_indices]
+                for i in new_indices:
+                    array[i] = auto
+                ergebnis[auto] = ergebnis.get(auto, 0) + 1
+                current_pos = parkplatz_index
+            elif status == "Außerhalb des Parkplatzes":
+                return 10**6, None
+            elif status == "blockiert":
+                current_pos = next_pos
+        total_moves = sum(ergebnis.values())
+        return total_moves, ergebnis
+    moves_links, ergebnis_links = versuchen("links")
+    moves_rechts, ergebnis_rechts = versuchen("rechts")
+    if moves_links <= moves_rechts:
+        return ergebnis_links, "links"
+    else:
+        return ergebnis_rechts, "rechts"

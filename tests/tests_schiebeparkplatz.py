@@ -18,6 +18,6 @@ def test_read_in_first_line(tmp_path):
     test_file = tmp_path / "test.txt"
     test_file.write_text("foo bar baz\nzweite zeile\n")
 
-    result = read_in_first_line(str(test_file))
+    result = read_first_line(str(test_file))
 
     assert result == "bar"

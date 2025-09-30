@@ -1,6 +1,7 @@
 import pytest
 from src.schiebeparkplatz import read_in_parkplatz
 from src.schiebeparkplatz import read_first_line
+from src.schiebeparkplatz import char_to_num
 
 def test_read_in_parkplatz(tmp_path):
 

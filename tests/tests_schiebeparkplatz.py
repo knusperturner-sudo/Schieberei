@@ -3,6 +3,7 @@ from src.schiebeparkplatz import read_in_parkplatz
 from src.schiebeparkplatz import read_first_line
 from src.schiebeparkplatz import char_to_num
 from src.schiebeparkplatz import read_rest
+from src.schiebeparkplatz import parkplatz_fuellen
 
 def test_read_in_parkplatz(tmp_path):
 
@@ -38,7 +39,8 @@ def test_read_rest(tmp_path):
 
 def test_parkplatz_fuellen():
     array = [None, None, None, None]
-    lines = ["A 1", "B 3"]
-    result = parkplatz_fuellen(array.copy(), lines)
+    lines = ["A 0", "B 2"]
+    result = parkplatz_fuellen(array, lines)
 
     assert result == ["A", "A", "B", "B"]
+

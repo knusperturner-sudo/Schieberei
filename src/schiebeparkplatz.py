@@ -20,3 +20,13 @@ def read_rest(path: str) -> list[str]:
         f.readline()
         rest = [line.strip() for line in f]
         return rest
+
+def parkplatz_fuellen(array: list, lines: list[str]) -> list:
+    for line in lines:
+        auto, platz = line.split()
+        index = int(platz)
+        if 0 <= index < len(array):
+            array[index] = auto
+        if 0 <= index + 1 < len(array):
+            array[index + 1] = auto
+    return array

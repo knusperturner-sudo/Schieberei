@@ -28,3 +28,9 @@ def test_char_to_num():
     assert char_to_num("B") == 2
     assert char_to_num("Z") == 26
     assert char_to_num("a") == 1  # Teste auch Kleinbuchstaben
+
+def test_read_rest(tmp_path):
+    test_file = tmp_path / "test.txt"
+    test_file.write_text("erste Zeile\nzweite Zeile\ndritte Zeile\nvierte Zeile\n")
+    result = read_rest(str(test_file))
+    assert result == ["dritte Zeile", "vierte Zeile"]

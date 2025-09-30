@@ -67,3 +67,20 @@ def test_analyze_key_position():
     assert analyze_key_position(parkplatz, 4) == "Außerhalb des Parkplatzes"
     assert analyze_key_position(parkplatz, 1) == "frei"
     assert analyze_key_position(parkplatz, 0) == "blockiert"
+
+def test_solve_iterativ():
+    parkplatz = [None, "H", "H", None]
+    quereAutos = {"H": 1}
+    anzahlNormal = len(parkplatz)
+
+    ergebnis, richtung = solve_iterativ(parkplatz, quereAutos, 1, anzahlNormal)
+    assert ergebnis == {"H": 1}
+    assert richtung == "links"
+
+    parkplatz = [None, "H", "H", "H", None]
+    quereAutos = {"H": 1}
+    anzahlNormal = len(parkplatz)
+
+    ergebnis, richtung = solve_iterativ(parkplatz, quereAutos, 2, anzahlNormal)
+    assert ergebnis == {"H": 2}
+    assert richtung == "links"

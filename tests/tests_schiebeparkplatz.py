@@ -7,6 +7,7 @@ from src.schiebeparkplatz import parkplatz_fuellen
 from src.schiebeparkplatz import find_key_positions
 from src.schiebeparkplatz import analyze_key_position
 from src.schiebeparkplatz import solve_iterativ
+from src.schiebeparkplatz import ausgabe_ergebnisse
 
 def test_read_in_parkplatz(tmp_path):
 

@@ -87,3 +87,18 @@ def solve_iterativ(parkplatz: list, quereAutos: dict, parkplatz_index: int, anza
         return ergebnis_links, "links"
     else:
         return ergebnis_rechts, "rechts"
+
+def ausgabe_ergebnisse(parkplatz, quereAutos, anzahlNormal):
+    outputs = []
+    for i in range(anzahlNormal):
+        ergebnis, richtung = solve_iterativ(parkplatz, quereAutos, i, anzahlNormal)
+        label = chr(i + 65)
+        if ergebnis is None:
+            outputs.append(f"{label}:")
+        else:
+            moves = []
+            keys = sorted(ergebnis.keys(), reverse=(richtung == "rechts"))
+            for key in keys:
+                moves.append(f"{key} {ergebnis[key]} {richtung}")
+            outputs.append(f"{label}: " + ", ".join(moves))
+    return outputs

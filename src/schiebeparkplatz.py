@@ -3,7 +3,7 @@ def read_in_parkplatz(dateipfad):
         return [zeile.strip() for zeile in f]
 
 
-def read_in_first_line(path: str) -> str:
+def read_first_line(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
         line = f.readline().strip()
         tokens = line.split()

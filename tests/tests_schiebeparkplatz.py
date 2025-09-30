@@ -86,3 +86,20 @@ def test_solve_iterativ():
     assert ergebnis["H"] >= 1
     assert ergebnis["I"] >= 1
     assert richtung in ("links", "rechts")
+
+def test_ausgabe_ergebnisse():
+    parkplatz = [None, None, "H", "H", None, "I", "I"]
+    quereAutos = {"H": 2, "I": 5}
+    anzahlNormal = len(parkplatz)
+
+    expected = [
+        "A:",
+        "B:",
+        "C: H 1 rechts",
+        "D: H 1 links",
+        "E:",
+        "F: H 1 links, I 2 links",
+        "G: I 1 links"
+    ]
+
+    assert ausgabe_ergebnisse(parkplatz, quereAutos, anzahlNormal) == expected

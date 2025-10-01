@@ -1,7 +1,11 @@
-def read_in_parkplatz(dateipfad):
-    with open(dateipfad, 'r') as f:
-        return [zeile.strip() for zeile in f]
-
+def read_in_parkplatz(path):
+    with open(path, 'r') as f:
+        firstline = read_first_line(path)
+        groesse = char_to_num(firstline)
+        rest = read_rest(path)
+        parkplatz = [None] * groesse
+        parkplatz_array = parkplatz_fuellen(parkplatz, rest)
+    return parkplatz_array
 
 def read_first_line(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
@@ -52,7 +56,7 @@ def analyze_key_position(parkplatz: list, pos: int) -> str:
         return "frei"
     return "blockiert"
 
-def solve_iterativ(parkplatz: list, quereAutos: dict, parkplatz_index: int, anzahlNormal: int):
+def solve_iterativ(parkplatz: list, quereAutos: dict, parkplatz_index: int):
     if parkplatz[parkplatz_index] is None:
         return None, None
     def versuchen(richtung: str):
@@ -102,3 +106,4 @@ def ausgabe_ergebnisse(parkplatz, quereAutos, anzahlNormal):
                 moves.append(f"{key} {ergebnis[key]} {richtung}")
             outputs.append(f"{label}: " + ", ".join(moves))
     return outputs
+

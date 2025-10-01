@@ -118,3 +118,9 @@ def fill_quere_autos_dict(lines: list[str]) -> dict:
         auto, platz = line.split()
         quereAutos[auto] = int(platz)
     return quereAutos
+
+def main(path):
+    parkplatz, quereAutos, anzahlNormal = read_in_parkplatz(path)
+    results = ausgabe_ergebnisse(parkplatz, quereAutos, anzahlNormal)
+
+    return results

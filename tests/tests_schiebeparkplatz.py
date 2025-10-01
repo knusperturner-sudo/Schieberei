@@ -9,6 +9,8 @@ from src.schiebeparkplatz import analyze_key_position
 from src.schiebeparkplatz import solve_iterativ
 from src.schiebeparkplatz import ausgabe_ergebnisse
 from src.schiebeparkplatz import fill_quere_autos_dict
+from src.schiebeparkplatz import main
+
 
 def test_read_in_parkplatz():
     result = (read_in_parkplatz("/Users/knusper_desktop/Desktop/Schieberei/parkplätze/parkplatz0.txt"))
@@ -109,3 +111,60 @@ def test_fill_quere_autos_dict():
     lines = ["H 2", "I 5"]
     result = fill_quere_autos_dict(lines)
     assert result == {"H": 2, "I": 5}
+
+def test_main():
+    result = main("/Users/knusper_desktop/Desktop/Schieberei/parkplätze/parkplatz0.txt")
+
+    expected = [
+        "A:",
+        "B:",
+        "C: H 1 rechts",
+        "D: H 1 links",
+        "E:",
+        "F: H 1 links, I 2 links",
+        "G: I 1 links"
+    ]
+    assert result == expected
+
+    result = main("/Users/knusper_desktop/Desktop/Schieberei/parkplätze/parkplatz2.txt")
+
+    expected = [
+
+    "A:",
+    "B:",
+    "C: O 1 rechts",
+    "D: O 1 links",
+    "E:",
+    "F: O 1 links, P 2 links",
+    "G: P 1 links",
+    "H: R 1 rechts, Q 1 rechts",
+    "I: P 1 links, Q 1 links",
+    "J: R 1 rechts",
+    "K: P 1 links, Q 1 links, R 1 links",
+    "L:",
+    "M: P 1 links, Q 1 links, R 1 links, S 2 links",
+    "N: S 1 links"
+]
+    assert result == expected
+
+    result = main("/Users/knusper_desktop/Desktop/Schieberei/parkplätze/parkplatz1.txt")
+
+    expected = [
+
+        "A:",
+        "B: P 1 rechts, O 1 rechts",
+        "C: O 1 links",
+        "D: P 1 rechts",
+        "E: O 1 links, P 1 links",
+        "F:",
+        "G: Q 1 rechts",
+        "H: Q 1 links",
+        "I:",
+        "J:",
+        "K: R 1 rechts",
+        "L: R 1 links",
+        "M:",
+        "N:"
+    ]
+
+    assert result == expected

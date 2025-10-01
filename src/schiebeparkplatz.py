@@ -1,11 +1,16 @@
-def read_in_parkplatz(path):
-    with open(path, 'r') as f:
-        firstline = read_first_line(path)
-        groesse = char_to_num(firstline)
-        rest = read_rest(path)
-        parkplatz = [None] * groesse
-        parkplatz_array = parkplatz_fuellen(parkplatz, rest)
-    return parkplatz_array
+def read_in_parkplatz(path: str) -> tuple[list, dict, int]:
+    with open(path, "r", encoding="utf-8") as f:
+        erstes, letztes = f.readline().strip().split()
+        anzahlNormal = ord(letztes) - ord(erstes) + 1
+        f.readline()
+        lines = [line.strip() for line in f]
+
+    parkplatz_array = [None] * anzahlNormal
+    quereAutos = fill_quere_autos_dict(lines)
+    parkplatz_array = parkplatz_fuellen(parkplatz_array, lines)
+    return parkplatz_array, quereAutos, anzahlNormal
+
+
 
 def read_first_line(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
@@ -56,7 +61,7 @@ def analyze_key_position(parkplatz: list, pos: int) -> str:
         return "frei"
     return "blockiert"
 
-def solve_iterativ(parkplatz: list, quereAutos: dict, parkplatz_index: int):
+def solve_iterativ(parkplatz: list, quereAutos: dict, parkplatz_index: int, normaleAutos):
     if parkplatz[parkplatz_index] is None:
         return None, None
     def versuchen(richtung: str):
@@ -107,3 +112,9 @@ def ausgabe_ergebnisse(parkplatz, quereAutos, anzahlNormal):
             outputs.append(f"{label}: " + ", ".join(moves))
     return outputs
 
+def fill_quere_autos_dict(lines: list[str]) -> dict:
+    quereAutos = {}
+    for line in lines:
+        auto, platz = line.split()
+        quereAutos[auto] = int(platz)
+    return quereAutos

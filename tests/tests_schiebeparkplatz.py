@@ -8,15 +8,15 @@ from src.schiebeparkplatz import find_key_positions
 from src.schiebeparkplatz import analyze_key_position
 from src.schiebeparkplatz import solve_iterativ
 from src.schiebeparkplatz import ausgabe_ergebnisse
+from src.schiebeparkplatz import fill_quere_autos_dict
 
-def test_read_in_parkplatz(tmp_path):
+def test_read_in_parkplatz():
+    result = (read_in_parkplatz("/Users/knusper_desktop/Desktop/Schieberei/parkplätze/parkplatz0.txt"))
 
-    test_file = tmp_path / "parkplatz.txt"
-    test_file.write_text("Parkplatz A\nParkplatz B\n")
+    assert result[0] == [None, None, "H", "H", None, "I", "I"]
+    assert result[1] == {"H": 2, "I": 5}
+    assert result[2] == 7
 
-    result = read_in_parkplatz(str(test_file))
-
-    assert result == ["Parkplatz A", "Parkplatz B"]
 
 
 
@@ -104,3 +104,8 @@ def test_ausgabe_ergebnisse():
     ]
 
     assert ausgabe_ergebnisse(parkplatz, quereAutos, anzahlNormal) == expected
+
+def test_fill_quere_autos_dict():
+    lines = ["H 2", "I 5"]
+    result = fill_quere_autos_dict(lines)
+    assert result == {"H": 2, "I": 5}

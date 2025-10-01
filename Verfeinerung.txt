@@ -22,3 +22,24 @@
         2. Die Variante wählen, bei der weniger verschoben werden muss
 3. Ergebnis ausgeben
     1. Dabei auf das richtige Format achten
+
+
+Reflexion:
+Durch das Löschen hat sich natürlich einiges verändert, aber ich hab versucht die Strutktur so zu halten
+wie sie beim ersten mal war.
+
+Dahingehend auch meine Learnings die ich beim ersten mal hatte:
+Mit Fortschreitendem Programmieren habe ich mich immer mehr von der TDD methode und der
+Idee der schrittweisen Verfeinerung entfernt, weil ich immer mehr in das mir bekannte
+"trial und error" verfallen bin.
+Das könnte auch daran liegen, dass ich mit python nicht so vertraut bin und noch mehr ausprobieren
+musste.
+
+Allerdings habe ich gemerkt, dass das grundsätzliche anfängliche Überlegen für die schrittweise
+Verfeinerung mir viel geholfen hat und ich möchte mich bei nächsten Projekten mehr daran versuchen
+
+Das Programmieren nach TDD, auch wenn ich es nicht optimal gemacht habe, war auch eine große
+Hilfe, weil ich mir über schon getestete Funktionen keine Sorgen mehr gmeacht habe.
+Gerade bei komplexeren muss ich hier aber auch strikter sein und alle fälle/ zweige
+am besten einzelnd abtesten.
+Auch hier werde ich mich weiter dran versuchen
